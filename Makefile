@@ -1,8 +1,14 @@
+CFLAGS=-Wall -std=c11 -g
+SRCS=$(wildcard *.c)
+OBJS=$(SRCS:.c=.o)
 
-scc: scc.c
+scc: $(OBJS)
+	cc -o $@ $(OBJS) $(LDFLAGS)
+
+$(OBJS): scc.h
 
 test: scc
 	./test.sh
 
 clean:
-	rm -f scc *.o *~ tmp*
+	rm -f 9cc *.o *~ tmp*
